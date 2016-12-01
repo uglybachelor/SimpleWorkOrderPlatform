@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <% include ./include/header %>
+    <div class="container-fluid" id="wrapper">
+      <% include ./include/dashboard %>
+      
+      <% include ./include/client_list %>
+
+      <% include ./include/ticket_list %>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>

@@ -1,0 +1,17 @@
+<br />
+<ul class="list-group">
+  <% for(var comment of ticket.comments) { %>
+    <li class="list-group-item">
+      <h5>用户：<%= comment.user %></h5>
+      <span class="info"> 回复于： <%= comment.time %></span></p>
+      <p><%= comment.content %></p>
+    </li>
+  <% } %>
+</ul>
+
+<form method="post" action="/comment/<%= ticket.ticket_number %>">
+  <div class="form-group">
+    <textarea class="form-control" name="content" rows="5" style="margin:10px"></textarea>
+    <button class="btn btn-primary" type="submit" style="margin:10px">评论</button>
+  </div>
+</form>

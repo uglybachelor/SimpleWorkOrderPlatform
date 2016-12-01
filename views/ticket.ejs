@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <% include ./include/header %>
+    <div class="container-fluid" id="wrapper">
+    <% if(ticket.active) { %>
+      <div class="panel panel-danger">
+    <% } else {%>
+      <div class="panel panel-success">
+    <% } %>
+        <div class="panel-heading">
+          <h4>工单详情
+            <% if(ticket.active) { %>
+              <span class="label label-warning"> 未解决</span>
+            <% } else { %>
+              <span class="label label-success"> 已关闭</span>
+            <% } %>
+          </h4>
+        </div>
+        <div class="panel-body">
+          <div class="row">
+            <div class="col-md-3">
+              <h4>工单单号</h4>
+              <p><%= ticket.ticket_number %></p>
+            </div>
+            <div class="col-md-3">
+              <h4>客户名称</h4>
+              <p><%= ticket.ticket_name %></p>
+            </div>
+            <div class="col-md-3">
+              <h4>开启时间</h4>
+              <p><%= ticket.open_time %></p>
+            </div>
+            <div class="col-md-3">
+              <h4>关闭时间</h4>
+              <p><%= ticket.close_time %></p>
+            </div>
+          </div>
+
+          <div class="row">
+            <div class="col-md-3">
+              <h4>工单Owner</h4>
+              <p><%= ticket.owner %></p>
+            </div>
+            <div class="col-md-3">
+              <h4>预计解决时间</h4>
+              <p><%= ticket.schedule_time %></p>
+            </div>
+            <div class="col-md-6">
+              <h4>工单描述-售前提供</h4>
+              <p><%= ticket.ticket_description %></p>
+            </div>
+          </div>
+        </div>
+        <% if(ticket.active) { %>
+          <div class="panel-footer">
+            <div class="row">
+              <button class="btn btn-primary" style="float:right" onclick="location='/edit_ticket/<%= ticket.ticket_number %>'">修改工单信息</button>
+            </div>
+          </div>
+        <% } %>
+      </div>
+      <% include ./include/comment %>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>

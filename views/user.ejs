@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <% include ./include/header %>
+    <div class="container-fluid" id="wrapper">
+      <div class="row">
+        <h3>欢迎使用源通讯项目管理平台</h3>
+      </div>
+
+      <div class="row">
+        <button class="btn btn-danger" role="button" onclick="location='/logout'" method='get'>退出登陆</button>
+      </div>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>

@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <% include ./include/header %>
+    <div class="container-fluid" id="wrapper">
+      <form role="form" method="post" action="/new_ticket">
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="name">客户名称</label>
+            <input id="name" name="name" type="text" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="open_time">开启时间</label>
+            <input id="open_time" name="open_time" type="date" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="schedule_time">预计解决时间</label>
+            <input id="schedule_time" name="schedule_time" type="date" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="close_time">关闭时间（请务必在工单关闭后填写）</label>
+            <input id="close_time" name="close_time" type="date" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="owner">工单Owner</label>
+            <input id="owner" name="owner" type="text" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="description">工单描述</label>
+            <textarea id="description" name="description" type="text" rows="5" class="form-control"></textarea>
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">创建工单</button>
+      </form>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>

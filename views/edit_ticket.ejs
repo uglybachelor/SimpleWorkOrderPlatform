@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <% include ./include/header %>
+    <div class="container-fluid"  id="wrapper">
+      <form role="form" method="post" action="/edit_ticket">
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="num">工单单号</label>
+            <input id="num" name="num" type="text" value="<%= ticket.ticket_number %>" class="form-control" readOnly="true">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="name">客户名称</label>
+            <input id="name" name="name" type="text" value="<%= ticket.ticket_name %>" class="form-control" readOnly="true">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="owner">工单Owner</label>
+            <input id="owner" name="owner" type="text" value="<%= ticket.owner %>" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="open_time">开启时间</label>
+            <input id="open_time" name="open_time" value="<%= ticket.open_time %>" type="Date" class="form-control" readOnly="true">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="close_time">关闭时间</label>
+            <input id="close_time" name="close_time" type="Date" value="<%= ticket.close_time %>" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="schedule_time">预计解决时间</label>
+            <input id="schedule_time" name="schedule_time" type="Date" value="<%= ticket.schedule_time %>" class="form-control">
+          </div>
+        </div>
+
+        <div class="form-group row">
+          <div class="col-md-4">
+            <label for="ticket_description">工单描述</label>
+            <input id="ticket_description" name="ticket_description" type="text" value="<%= ticket.ticket_description %>" class="form-control">
+          </div>
+        </div>
+
+        <button class="btn btn-primary" type="submit">修改工单信息</button>
+      </form>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>

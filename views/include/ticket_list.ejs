@@ -1,0 +1,55 @@
+
+<div class="panel panel-info">
+  <div class="panel-heading"><h4>工单列表</h4></div>
+  <%# <div class="panel-body">
+    <div class="row">
+    </div>
+  </div>%>
+  <table class="table table-hover table-bordered">
+    <thead>
+      <th>工单单号</th>
+      <th>工单状态</th>
+      <th>客户名称</th>
+      <th>工单描述</th>
+      <th>开启时间</th>
+      <th>预计解决时间</th>
+      <th>关闭时间</th>
+      <th>Owner</th>
+    </thead>
+    <tbody>
+
+      <% for (var ticket of tickets) { %>
+        <tr>
+          <td>
+            <a href="/ticket/<%= ticket.ticket_number %>"> <%= ticket.ticket_number %> </a>
+          </td>
+          <td>
+            <% if(ticket.active) { %>
+              <p style="color: red">开启</p>
+            <% } else { %>
+              <p>关闭</p>
+            <% } %>
+          </td>
+          <td><%= ticket.ticket_name %></td>
+          <td><%= ticket.ticket_description %></td>
+          <td><%= ticket.open_time %></td>
+          <td><%= ticket.schedule_time %></td>
+          <td><%= ticket.close_time %></td>
+          <td><%= ticket.owner %></td>
+        </tr>
+      <% } %>
+
+    </tbody>
+  </table>
+  <div class="panel-footer">
+    <div class="row">
+      <div class="col-md-6">
+        <% if(title == '源通讯项目管理平台') { %>
+        <a href="/ticket_list">查看全部<%= t_count %>个
+        </a>
+        <% } %>
+      </div>
+      <button class="btn btn-primary" type="button" onclick="location='/new_ticket'" method="get" style="float:right">新增工单</button>
+    </div>
+  </div>
+</div>

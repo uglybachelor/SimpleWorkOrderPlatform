@@ -1,0 +1,18 @@
+
+<div class="jumbotron">
+  <div class="container">
+    <h2>加班，是会呼吸的痛</h2>
+    <h3>—— 莎士比亚</h3>
+    <br />
+
+    <% if(req.isAuthenticated()) { %>
+
+    <h4>欢迎回来，<%= req.user[0].username %>君！</h4>
+
+    <% } else { %>
+
+    <p><a class="btn btn-primary btn-lg" href="/login" role="button">来都来了，登陆吧</a></p>
+
+    <% } %>
+  </div>
+</div>

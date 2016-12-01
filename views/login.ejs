@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= title %></title>
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+    <link rel='stylesheet' href='/stylesheets/bootstrap.min.css' />
+  </head>
+  <body>
+    <nav class="navbar navbar-default navbar-static-top" role="navigation">
+      <div class="container-fluid">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" style="color: #347cdf">源通讯项目管理平台</a>
+        </div>
+      </div>
+    </nav>
+    <div class="container-fluid" id="login_page">
+
+      <div class="panel panel-default">
+        <div class="panel-heading">
+          <h4>登陆</h4>
+        </div>
+        <div class="panel-body">
+          <form role="form" method="post" action="login">
+            <div class="form-group">
+              <label for="username">用户名</label>
+              <input id="username" name="username" type="text" class="form-control" >
+            </div>
+            <div class="form-group">
+              <label for="password">密码</label>
+              <input id="password" name="password" type="text" class="form-control" >
+            </div>
+
+            <button class="btn btn-primary" type="submit">登陆</button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <% include ./include/footer %>
+  </body>
+</html>
