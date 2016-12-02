@@ -1,5 +1,7 @@
 # SimpleWorkOrderPlatform
-A simple platform for customer &amp; work order management
+A simple platform for customer &amp; work order management.
+
+This project is based on `Vue.js`, `Mongodb` and `Node.js`. If you are new to these things, this project would be a simple enough example for you to get going.
 
 ## How to deploy ##
 
