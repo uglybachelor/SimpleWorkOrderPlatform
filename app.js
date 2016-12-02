@@ -27,7 +27,7 @@ app.use(cookieParser())
 app.use(session({ secret: 'ytx', cookie: { maxAge: 6000000 }}));
 app.use(passport.initialize())
 app.use(passport.session())
-app.use(express.static(path.join(__dirname, 'swof/dist')))
+app.use(express.static(path.join(__dirname, 'front-end/dist')))
 
 app.use('/', routes)
 
