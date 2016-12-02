@@ -1,3 +1,11 @@
+/*
+helper module:
+
+1. generate random number based on date for work order ticket number.
+2. alert ticket owner, if you have a messaging api.
+*/
+
+
 var util = require('./models/util')
 var request = require('request')
 
@@ -11,19 +19,19 @@ var ticketNumGen = function() {
 
 var alertOwner = function(user_name) {
     util.findUser(user_name).then(function(user) {
-        var content = encodeURI('工单更新提醒：与你相关的工单有更新，请到源通讯项目管理平台查看：http://123.56.238.87:3000/')
-        var requestUrlDing = 'http://123.56.19.101:5000/ding2?secret=fskd2endprx&phone=' + user[0].phone + '&content=' + content
+        var content = encodeURI('Your work order has been updated!')
+        var requestUrlDing = 'http://xxx/'
         console.log(requestUrlDing)
         request.get({
             url: requestUrlDing
         }, function(err, response, body) {
             if(err) {
-                console.log('dingding msg err', err)
+                console.log('alert msg err', err)
                 return
             } else if(response.statusCode != 200) {
-                console.log('dingding msg err statusCode: ', response.statusCode)
+                console.log('alert msg err statusCode: ', response.statusCode)
             } else {
-                console.log('dingding msg statusCode: ', response.statusCode)
+                console.log('alert msg statusCode: ', response.statusCode)
             }
         })
     }).catch(function(err) {

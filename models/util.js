@@ -1,3 +1,7 @@
+/*
+DAO
+*/
+
 var Promise = require('bluebird')
 var express = require('express')
 var db = require('../models/db')

@@ -10,12 +10,12 @@ var helper = require('../helper')
 
 var router = express.Router()
 
-//主页
+//Homepage
 router.get('/', function(req, res, next) {
     res.render('index')
 })
 
-//客户详情页
+//client detail page
 router.all('/c/:name', isLoggedIn)
 router.get('/c/:name', function(req, res, next) {
     var name = req.params.name
@@ -27,8 +27,7 @@ router.get('/c/:name', function(req, res, next) {
     })
 })
 
-//客户列表页
-// router.all('/cl', isLoggedIn)
+//client list page
 router.get('/cl', function(req, res, next) {
     util.clientFindByPage(parseInt(req.query.offset), parseInt(req.query.limit))
     .then(function(results) {
@@ -38,7 +37,7 @@ router.get('/cl', function(req, res, next) {
     })
 })
 
-//获取总客户数
+//get client count
 router.all('/cc', isLoggedIn)
 router.get('/cc', function(req, res, next) {
     util.countClients()
@@ -49,11 +48,8 @@ router.get('/cc', function(req, res, next) {
     })
 })
 
-//新建客户页
+//create new client page
 router.all('/nc', isLoggedIn)
-// router.get('/new_client', function(req, res, next) {
-//
-// })
 router.post('/nc', function(req, res, next) {
     var nc = new db.Client({
         client_name: req.body.client_name,
@@ -79,11 +75,8 @@ router.post('/nc', function(req, res, next) {
     })
 })
 
-//修改客户信息
+//update client information
 router.all('/ec/:name', isLoggedIn)
-// router.get('/ec/:name', function(req, res, next) {
-//
-// })
 router.post('/ec', function(req, res, next) {
     var ec = {
         type: req.body.type,
@@ -101,7 +94,7 @@ router.post('/ec', function(req, res, next) {
     })
 })
 
-//工单详情页
+//ticket detail page
 router.all('/t/:num', isLoggedIn)
 router.get('/t/:num', function(req, res, next) {
     var num = req.params.num
@@ -113,8 +106,7 @@ router.get('/t/:num', function(req, res, next) {
     })
 })
 
-// 工单列表页
-// router.all('/tl', isLoggedIn)
+// ticket list page
 router.get('/tl', function(req, res, next) {
     util.ticketFindByPage(parseInt(req.query.offset), parseInt(req.query.limit))
     .then(function(results) {
@@ -133,7 +125,7 @@ router.get('/tl/:name', function(req, res, next) {
     })
 })
 
-//获取总工单数
+//get ticket count
 router.all('/tc', isLoggedIn)
 router.get('/tc', function(req, res, next) {
     util.countTickets()
@@ -144,11 +136,8 @@ router.get('/tc', function(req, res, next) {
     })
 })
 
-//新建工单页
+//create ticket page
 router.all('/nt', isLoggedIn)
-// router.get('/nt', function(req, res, next) {
-//
-// })
 router.post('/nt', function(req, res, next) {
     var num = helper.ticketNumGen()
     var nt = new db.Ticket({
@@ -171,17 +160,14 @@ router.post('/nt', function(req, res, next) {
     }).then(function(result) {
         return util.clientUpdate(req.body.ticket_name, { active_tickets: result.active_tickets+1 })
     }).then(function(result) {
-        console.log('active工单数 + 1')
+        console.log('active ticket number + 1')
     }).catch(function(err) {
         console.log('new ticket err: ', err)
     })
 })
 
-//修改工单信息
+//update ticket information
 router.all('/et', isLoggedIn)
-// router.get('/edit_ticket/:num', function(req, res, next) {
-//
-// })
 router.post('/et', function(req, res, next) {
     var nt = {
         ticket_description: req.body.ticket_description,
@@ -214,14 +200,7 @@ router.post('/et', function(req, res, next) {
     })
 })
 
-//添加评论
-router.all('/cm/:num', isLoggedIn)
-router.post('/cm/:num', function(req, res, next) {
-
-})
-
-//搜索客户
-// router.all('/cs', isLoggedIn)
+//search for a client
 router.post('/cs', function(req, res, next) {
     util.clientSearch(req.body.term)
     .then(function(results) {
@@ -232,8 +211,7 @@ router.post('/cs', function(req, res, next) {
     })
 })
 
-//搜索工单
-// router.all('/ts', isLoggedIn)
+//search for a ticket
 router.post('/ts', function(req, res, next) {
     util.ticketSearch(req.body.term)
     .then(function(results) {
@@ -243,13 +221,7 @@ router.post('/ts', function(req, res, next) {
     })
 })
 
-//用户页面
-// router.all('/u/:name', isLoggedIn)
-// router.get('/u/:name', function(req, res, next) {
-//
-// })
-
-//获取用户名
+//get username
 router.get('/h', function(req, res, next) {
     if(req.user) {
         res.send({ user: req.user[0] })
@@ -259,10 +231,7 @@ router.get('/h', function(req, res, next) {
 
 })
 
-//处理登陆
-// router.get('/login', function(req, res, next) {
-//
-// })
+//login
 router.post('/login', passport.authenticate('local'), function(req, res) {
     res.send({ msg: 'success' })
 })
@@ -270,7 +239,7 @@ router.post('/login', passport.authenticate('local'), function(req, res) {
 router.get('/logout', function (req, res) {
     req.logout()
     res.send({ msg: 'success' })
-    console.log('登出成功')
+    console.log('logout successful')
 })
 
 function isLoggedIn(req, res, next) {
@@ -278,7 +247,7 @@ function isLoggedIn(req, res, next) {
         return next()
     }
 
-    console.log('未登录')
+    console.log('not logged in')
 }
 
 module.exports = router

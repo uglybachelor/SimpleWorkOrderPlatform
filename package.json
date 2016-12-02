@@ -1,6 +1,6 @@
 {
-  "name": "ytx",
-  "version": "0.0.0",
+  "name": "swo",
+  "version": "0.0.1",
   "private": true,
   "scripts": {
     "start": "node ./bin/www"
